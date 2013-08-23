@@ -1,0 +1,159 @@
+"Chicken Satay",1,"BBQ marinated chicken",1,1,2,0,4.213,0,20,4.95,99999,,4.75\
+"Spring Rolls",2,"spring rolls",1,1,2,0,3.617,0,20,4.5,99999,,4.5\
+"Golden Bags",3,"Chicken & prawn in crispy bag",1,1,2,0,3.958,0,20,4.95,99999,,4.75\
+"Butterfly Prawns",4,"Deep fried prawns in batter",1,1,2,0,4.213,0,20,5.95,99999,,5.5\
+"Kanoom Jeeb",5,"Dim sum",1,1,2,0,3.617,0,20,4.95,99999,,4.75\
+"Prawns on Toast",6,"Prawns & chicken on toast",1,1,2,0,4.894,0,20,4.75,99999,,4.5\
+"Spare ribs",7,"marinated spare ribs",1,1,2,0,4.894,0,20,4.95,99999,,4.75\
+"Tord Mun Pla",8,"Thai fish cakes",1,1,2,0,4.894,0,20,5.95,99999,,5.5\
+"Salt and Pepper Squid",9,"deep fried squid in batter",1,1,2,0,4.213,0,20,5.95,99999,,5.75\
+"Twin Boys Mixed Starters",10,"mixed starters",1,1,2,0,9.787,0,20,11.5,99999,,10.75\
+"Tom Yam Gai",11,"Chicken hot and sour soup",2,1,2,0,4.213,0,20,4.95,99999,,4.75\
+"Tom Yam Goong",12,"prawn hot & sour soup",2,1,2,0,4.894,0,20,5.95,99999,,5.5\
+"Tom Kha Gai",13,"chicken coconut soup",2,1,2,0,4.213,0,20,4.95,99999,,4.75\
+"Tom Kha Goong",14,"prawn coconut soup",2,1,2,0,4.894,0,20,5.95,99999,,5.5\
+"Yam Neua",15,"spicy beef salad",3,1,2,0,6.383,0,20,7.95,99999,,7.5\
+"Pla Goong",16,"king prawn salad",3,1,2,0,6.383,0,20,8.25,99999,,7.95\
+"Lap Gai or Moo",17,"chopped chicken salad",3,1,2,0,5.915,0,20,7.25,99999,,6.95\
+"Som Tum",18,"papaya salad",3,1,2,0,5.064,0,20,6.5,99999,,6.25\
+"Chicken Bang Bang",19,"BBQ marinated chicken salad",3,1,2,0,5.3,0,20,7.25,99999,,7.25\
+"Penang Chicken",20,"chicken penang curry",4,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Penang Beef/Prawn",21,"Beef/prawn penang curry",4,1,2,0,6.766,0,20,7.95,99999,,7.95\
+"Green Curry Chicken",22,"chicken green curry",4,1,2,0,6.766,0,20,7.25,99999,,7.25\
+"Green curry beef/prawns",23,"beef/prawn green curry",4,1,2,0,5.915,0,20,7.95,99999,,7.95\
+"Red curry chicken",24,"chicken red curry",4,1,2,0,6.766,0,20,7.25,99999,,7.25\
+"Red curry Beef/Prawns",25,"beef/prawn red curry",4,1,2,0,5.915,0,20,7.95,99999,,7.95\
+"Duck Curry",26,"duck red curry",4,1,2,0,7.234,0,20,9.5,99999,,9.5\
+"Jungle curry  chicken",27,"chicken jungle curry",4,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Jungle curry  beef",28,"beef jungle curry",4,1,2,0,6.383,0,20,7.95,99999,,7.95\
+"Massamun chicken",29,"chicjen massamun curry",4,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Pad Khing  pork/chicken",30,"Pork/chicken with ginger",5,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Pad Priew Waan  Pork/Chicken",31,"sweet & sour pork/chicken",5,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Pad Med Ma Muang  pork/chicken",32,"Pork/chicken with cashew nut",5,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Pad  kra prao  pork/chicken",33,"Pork/chicken with basil",5,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Pad Prig- pork/chicken",34,"Spicy with bamboo shoots – pork/chicken",5,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Pad KraTiem Prig Thai",35,"with garlic & pepper – pork/chicken",5,1,2,0,5.915,0,20,7.25,99999,,7.25\
+"Neua Pad Nam Munhoi",36,"beef in oyster sauce",6,1,2,0,6.383,0,20,7.95,99999,,7.95\
+"Neua Pad Khing",37,"beef with ginger",6,1,2,0,6.383,0,20,7.95,99999,,7.95\
+"Neua Pad Kra Prao",38,"beef with basil leaves",6,1,2,0,6.383,0,20,7.95,99999,,7.95\
+"Neua Pad Prig",39,"beef with bamboo shoots",6,1,2,0,6.383,0,20,7.95,99999,,7.95\
+"Ped Pad Kra Prao",40,"duck with basil leaves",7,1,2,0,7.234,0,20,9.5,99999,,9.5\
+"Ped Pad Sapparod",41,"duck with pineapple",7,1,2,0,7.234,0,20,9.5,99999,,9.5\
+"Ped Pad Prik Gang",42,"duck with a dry curry sauce",7,1,2,0,7.77,0,20,9.5,99999,,9.5\
+"Goong Pad Priew Waan",43,"sweet and sour prawns",8,1,2,0,6.766,0,20,8.25,99999,,8.25\
+"Goong Pad Broccoli",44,"prawns with broccoli",8,1,2,0,6.766,0,20,8.25,99999,,8.25\
+"Goong Pad Kra Prao",45,"prawns with basil leaves",8,1,2,0,6.766,0,20,8.25,99999,,8.25\
+"Goong Pad Prig",46,"prawns with bamboo",8,1,2,0,6.766,0,20,8.25,99999,,8.25\
+"Goong Yai Pao",47,"grilled jumbo prawns",8,1,2,0,8.88,0,20,10.5,99999,,9.95\
+"Pla Muek Tord Kar Tiem Prig Th",48,"squid with garlic and pepper",8,1,2,0,6.17,0,20,7.25,99999,,7.25\
+"Pla Nung Ma Nao",49,"steamed sea bass",8,1,2,0,10.638,0,20,12.95,99999,,12.5\
+"Pla Tod Krob",50,"sea bass with garlic and pepper",8,1,2,0,10.638,0,20,12.95,99999,,12.5\
+"Pla Rad Prig",51,"deep fried red snapper",8,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Pla Ma Kham",52,"red snapper with tamarind sauce",8,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Ped Ma Kham",53,"duck with tamarind sauce",9,1,2,0,7.234,0,20,9.95,99999,,9.95\
+"Goong Ma Kham",54,"Grilled prawns with tamarind sauce",9,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Chu Chi Goong",55,"prawn red curry",9,1,2,0,8.936,0,20,9.95,99999,,9.95\
+"Chu Chi Pla",56,"red snapper red curry",9,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Ped Ka Proaw Krob",57,"Deep fried duck",9,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Tiger Cry",58,"char grilled steak",9,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Neua Ga-Ta",59,"sizzling sirloin steak",9,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Volcano Chicken",60,"char grilled poulet",9,1,2,0,8.085,0,20,9.5,99999,,8.95\
+"Pad Koh Phuket",61,"mixed seafood",9,1,2,0,8.468,0,20,9.95,99999,,9.95\
+"Pad Pak Ruam",62,"stir fried mixed vegetables",10,1,2,0,3.617,0,20,4.25,99999,,3.95\
+"Pad Tua Ngok",63,"stir fried bean sprouts",10,1,2,0,3.362,0,20,3.95,99999,,3.75\
+"Pad Pak Boong",64,"morning glory",10,1,2,0,4.681,0,20,5.5,99999,,5.25\
+"Pad Ma Khua",65,"stir fried aubergine",10,1,2,0,3.829,0,20,4.5,99999,,3.95\
+"Thai Fragrant rice",66,"stemed rice",11,1,2,0,1.702,0,20,2,99999,,2\
+"Egg fried rice",67,"egg fried rice",11,1,2,0,2.34,0,20,2.75,99999,,2.5\
+"Khao Ka Thi",68,"cocnut rice",11,1,2,0,2.34,0,20,2.75,99999,,2.5\
+"Khao Neow",69,"sticky rice",11,1,2,0,2.766,0,20,3.25,99999,,2.95\
+"Special fried rice – chicken","70A","Special fried rice- chicken",11,1,2,0,1.66,0,20,6.25,99999,,5.95\
+"Special fried rice- beef/prawns","70B","Special fried rice- beef/prawns",11,1,2,0,2.22,0,20,6.95,99999,,6.95\
+"Twin Boys Special Fried Rice",71,"mixed meat fried rice",11,1,2,0,5.915,0,20,6.95,99999,,6.95\
+"Pad Thai  chicken","72A","thai noodle with chicken",12,1,2,0,5.915,0,20,6.95,99999,,6.5\
+"Pad Thai  beef/prawns","72B","thai noodle with beef/prawns",12,1,2,0,5.915,0,20,7.5,99999,,7.5\
+"Pad See-ew  chicken","73A","ribbon noodle with prawns",12,1,2,0,6.17,0,20,6.95,99999,,6.5\
+"Pad See-ew  beef/prawns","73B","ribbon noodle with prawns",12,1,2,0,6.17,0,20,7.5,99999,,7.5\
+"Pad Guay Tiew Khee Mao  Gai","74A","spicy ribbon noodle with chicken",12,1,2,0,5.915,0,20,6.95,99999,,6.5\
+"Pad Guay Tiew Khee Mao  beef/prawn","74B","spicy ribbon noodle with beef/prawn",12,1,2,0,5.915,0,20,7.5,99999,,7.5\
+"Ba Mee Pad Khai",75,"egg noodles with bean sprouts",12,1,2,0,3.83,0,20,4.5,99999,,4.25\
+" Tord Maan Khao Poad",76,"sweet corn cake",13,1,2,0,3.617,0,20,4.25,99999,,4.25\
+"Pak tempura",77,"mixed veg in batter",13,1,2,0,3.617,0,20,4.25,99999,,4.25\
+"Poh Pia Tord",78,"spring rolls",13,1,2,0,3.617,0,20,4.25,99999,,4.25\
+"Tao Hoo Tord",79,"deep fried bean curd",13,1,2,0,3.83,0,20,4.75,99999,,4.75\
+"Yam Hed",80,"spicy nushroom salad",13,1,2,0,3.617,0,20,4.25,99999,,4.25\
+"Tom Yam Hed",81,"hot and sour mushroom soup",13,1,2,0,3.617,0,20,4.25,99999,,4.25\
+"Tom Kha Hed",82,"mushroom coconut soup",13,1,2,0,3.617,0,20,4.25,99999,,4.25\
+"Pad Med Ma Muang Jay",83,"mixed veg with cashew nuts",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Pad Priew Waan Pak",84,"sweet & sour veg with bean curd",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Gaeng Kiew Waan Pak",85,"veg & bean curd green curry",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Gaeng Phed Pak",86,"veg & bean curd red curry",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Khao Pad Jay",87,"fried rice with veg & bean curd",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Pad Thai Jay",88,"ribbon noodles with egg",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Pad See-aw Jay",89,"ribbon noodle with egg & broccoli",14,1,2,0,5.064,0,20,6.95,99999,,6.95\
+"Set menu 1",90,"set menu number 1",15,1,2,0,13.617,0,20,16.95,99999,,16\
+"Set Menu 2",91,"set menu number 2",15,1,2,0,15.745,0,20,19,99999,,18.5\
+"Set Menu 3",92,"Set Menu Number 3",15,1,2,0,18.298,0,20,21.5,99999,,20\
+"Extra prawn crackers - small",93,"small bowl of crackers",16,1,2,0,0.851,0,20,1,99999,,1\
+"Extra Prawn crackers -- large",94,"large bowl of prawn crackers",16,1,2,0,1.277,0,20,1.5,99999,,1.5\
+"Lunch special  main course","L1","lunch main course with rice",17,1,2,0,5.532,0,20,6.5,99999,,6.5\
+"Lunch noodles","L2","lunch noodles",17,1,2,0,4.255,0,20,5,99999,,5\
+"2 course lunch","L3","2 course lunch",17,1,2,0,5.915,0,20,7.5,99999,,7.5\
+"Extra for prawns","L4","Additional cost of lunch with prawns",17,1,2,0,0.85,0,20,1,99999,,1\
+"Lunch Ice Cream","L5","ice cream (lunch)",17,1,2,0,1,0,20,1.95,99999,,0\
+"Lunch Tea or coffee","L6","lunch tea or coffe",17,2,2,0,0.8085,0,20,0.95,99784,,0\
+"special ice cream","D1","ice cream deserts",18,1,1,0,3.362,0,20,3.95,99999,,0\
+"Banana Fritter","D2","banane with ice cream",18,1,2,0,2.979,0,20,3.5,99999,,0\
+"Coconut Thai Pancake","D3","sliced coconut in pandan pancake",18,1,2,0,2.979,0,20,3.5,99999,,0\
+"Spring roll banana","D4","crispy spring stuffed with banana",18,1,2,0,2.979,0,20,3.5,99999,,0\
+"Kow Niew Mamooung","D5","mango with sticky rice",18,1,2,0,3.362,0,20,3.95,99999,,0\
+"Ice Cream","D6","ice cream",18,1,2,0,1,0,20,2.75,99999,,0\
+"House White - Bottle","W1","Chantarel Vin de Pay d'Oc",19,2,3,0,9.787,0,20,14.00,99999,,0\
+"House White - 175ml Glass","W1S","Chantarel Vib de Pays d'Oc",19,2,3,0,2.553,0,20,3.50,99999,,0\
+"House White - 250ml Glass","W1L","Chantarel Vin de Pays d'Oc",19,2,3,0,3.277,0,20,4.65,99999,,0\
+"Thai house white - bottle","W1T","monsoon valley white",19,2,2,3.1,10.638,0,20,15.00,99999,,0\
+"Thai House wfite - 175ml","W1TS","Moonsonn valley small glass",19,2,2,0,2.766,0,20,3.75,99999,,0\
+"Thai house white - 250 ml","W1TL","monsoon valley large glass",19,2,2,0,3.617,0,20,5.00,99999,,0\
+"Sauvignon - Kintu","W2","Sauvignon (France)",19,2,3,0,12.34,0,20,16.00,99999,,0\
+"Klippenkop","W3","Chenin Blanc (SouthAfrica)",19,2,3,0,13.4,0,20,17.50,99999,,0\
+"PinotGrigio - Ancora","W4","Pinot Grigo (Italy)",19,2,3,0,12.34,0,20,16.50,99999,,0\
+"Muscadet de Serve","W5","Les Folies (France)",19,2,3,0,14.894,0,20,19.00,99999,,0\
+"Chardonnay - Sierra Grande","W6","Sierra Grande (Chile)",19,2,3,0,13.574,0,20,17.00,99999,,0\
+"Pas Se Petit","W7","Petite Chablis (France)",19,2,3,0,18.681,0,20,24.00,99999,,0\
+"Domaine du Pre Senele","W8","Sancerre (France)",19,2,3,0,19.532,0,20,26.50,99999,,0\
+"Old Coach Road","W9","Sauvignon (New Zealand)",19,2,3,0,16.979,0,20,21.00,99999,,0\
+"House Red - Bottle","W10","France",20,2,3,0,9.787,0,20,14.00,99999,,0\
+"House Red - 175ml Glass","W10S","France",20,2,3,0,2.553,0,20,3,50,99999,,0\
+"House Red - 250ml Glass","W10L","France",20,2,3,0,3.277,0,20,4.65,99999,,0\
+"Thai House red - bottle","W10T","Monsoon valley red",20,2,2,3.1,10.638,0,20,15.00,99999,,0\
+"Thai House Red - 175ml","W10TS","Monsoon valley red small glass",20,2,2,0,2.766,0,20,3.75,99999,,0\
+"Thai House Red - 250ml","W10TL","Monsoon valley red large glass",20,2,2,0,3.617,0,20,5.00,99999,,0\
+"Kintu Merlot","W11","Merlot (France)",20,2,3,0,12.34,0,20,16.5,99999,,0\
+"Koala Tree","W12","Shiraz/Cabernet (Australia)",20,2,3,0,13.574,0,20,16.00,99999,,0\
+"Chianti","W13","Colli Sensei",20,2,3,0,14.426,0,20,18.00,99999,,0\
+"Barronniede Sabran","W14","Cote de Rhone(France)",20,2,3,0,14.043,0,20,18.00,99999,,0\
+"Sierra Grande","W15","Cabernet Sauvignon (Chile)",20,2,3,0,15.277,0,20,16.50,99999,,0\
+"MonsoonValley Rose","W16","Thai rose wine",21,2,2,3.1,10.638,0,20,15.00,99999,,0\
+"Thai Rose - 175ml","W16TS","Monsoon valley rose small glass",20,2,2,0,2.766,0,20,3.75,99999,,0\
+"Thai Rose - 250ml","W16TL","Monsoon valley rose large glass",20,2,2,0,3.617,0,20,5.00,99999,,0\
+"Pinot GrigioRose","W17","rose pinot",21,2,3,0,14.426,0,20,17.50,99999,,0\
+"House Champagne","W18","Drappier NV",22,2,3,0,25.106,0,20,29.5,99999,,0\
+"Lanson","W19","Champagne",22,2,3,0,31.064,0,20,36.5,99999,,0\
+"Standard Spirit 25ml","W20","standard brand of spirit",23,2,1,0,2.34,0,20,2.75,99999,,0\
+"Deluxe spirit 25ml","W21","Deluxe brand of spirit",23,2,1,0,3.191,0,20,3.75,99999,,0\
+"Liqueurs","W22","Tia Maria etc",23,2,2,1,2.979,0,20,17.5,99999,,0\
+"Port - 50ml","W23","Port Late bottle vintage",23,2,1,0,2.511,0,20,2.95,99999,,0\
+"Speciality Coffees","W24","Irish Coffee",23,2,1,0,3.191,0,20,3.75,99999,,0\
+"Singha","W25","33cl bottle",24,2,1,0,2.511,0,20,2.95,99999,,0\
+"Budweiser","W26","33cl Bottle",24,2,1,0,2.511,0,20,2.95,99999,,0\
+"Tiger","W27","33cl Bottle",24,2,1,0,2.511,0,20,2.95,99999,,0\
+"Chang","W28","33cl Beer",24,2,3,0,2.511,0,20,2.95,99999,,0\
+"House wine offer","W29","Free if over 25 spent (with leaflet)",16,2,3,0,0,0,20,0,99999,,0\
+"soft Drink","W30","coke etc",25,2,3,2,1,0,20,,99999,,0\
+"Fruit Juice","W31","Orange etc",25,1,3,2,1,0,20,,99999,,0\
+"Mineral Water - 33cl","W32","still or sparkling water",25,2,1,0,1.277,0,20,1.5,99999,,0\
+"Mineral Water 100cl","W33","Sparkling or still water",25,2,1,0,2.34,0,20,2.75,99999,,0\
+"Coffee","W34","Coffee per cup",25,2,1,0,1.277,0,20,1.5,99999,,0\
+"English Tea","W35","English per cup",25,2,3,0,1.064,0,20,1.25,99999,,0\
+"JasmineTea","W36","Jasemine per cup",25,2,2,0,1.277,0,20,1.5,99999,,0\
+"Floter coffee","W37","coffee     ",25,2,1,0,1.489,0,20,1.75,99999,,0\
