@@ -2,3 +2,4 @@ Index of directories under pointofsale
 
 - database: directory of files required to build/update databases. build database contains SQL to
   build database and csv files to create items and brands
+- test: directory of files unassociated with the running of PHP POS, just used as coding examples
