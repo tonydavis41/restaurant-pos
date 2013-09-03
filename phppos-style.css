@@ -1,10 +1,40 @@
 /* CSS Document */
+body
+{
+margin:0;
+padding:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+input[type="submit"]
+{
+background:#33CC33;
+color:white;
+border-style:outset;
+border-color:#0066A2;
+height:25px;
+font: bold 15px arial,sans-serif;
+}
+table 
+{
+width:100%;
+border-color:white;
+border-width:1px;
+border-style:solid;
+border-collapse:collapse;
+color:white;
+background:#005B7F;
+}
+table td
+{
+border-color:white;
+border-width:1px;
+border-style:solid;
+}
 .category
 {
-float:left;
 font-family:Arial, Helvetica, sans-serif;
 font-size:12px;
-background-position:left center;
+background:#FFFFFF;
 line-height:16px;
 }
 .category ul
@@ -14,9 +44,10 @@ list-style-type: none;
 .category a
 {
 display:block;
+margin:0 auto;
 font-weight:bold;
 color:#FFFFFF;
-width:160px;
+width:180px;
 text-align:center;
 text-decoration:none;
 padding:2px;
@@ -27,4 +58,11 @@ border-bottom:medium solid white;
 .category a:hover , .category a:active
 {
 background-color:#009B7F;
+}
+.sale_info
+{
+background-color:#FFFFFF;
+color:#005B7F;
+height:12px;
+font: bold 10px arial,sans-serif;
 }

@@ -1,13 +1,9 @@
+<? ob_start(); ?>
 <?php
-if(isset($_GET['table']))
-{
-    $table = $_GET['table'];
-	 session_name("$table");
-}
+
 session_start();
 
-$newname=session_name();
-echo "<p> the session name is $newname ";
+
 
 include ("../settings.php");
 include ("../language/$cfg_language");
@@ -30,6 +26,19 @@ if(!$sec->isLoggedIn())
 {
 	header ("location: ../login.php");
 	exit();
+}
+
+//ADDED - check if takeaway order or restaurant order
+if(isset($_GET['type']))
+{
+	// If first time get saletype from previous screen
+	$_SESSION['saleType']=$_GET['type'];
+	$saletype=$_SESSION['saleType'];
+}
+else
+    echo "Went into set saletype when session already saved";
+    // saletype already known
+	{$saletype=$_SESSION['saleType'];
 }
 
 // If add to cart button pressed, save as $_SESSION['items_in_sale']
@@ -55,10 +64,17 @@ if(isset($_POST['addToCart']))
 	}
 	else
 	{
-		$thevalue = $_POST['num_of_customers'];
-		echo "<b>$lang->mustSelectNumberOfCustomers</b><br>";
-		echo "<a href=javascript:history.go()>$lang->refreshAndTryAgain</a>";
-		exit();
+		if($saletype=='takeaway')
+		{
+			$_SESSION['num_of_customers']= 1;
+		}
+		else
+		{
+			$thevalue = $_POST['num_of_customers'];
+			echo "<b>$lang->mustSelectNumberOfCustomers</b><br>";
+			echo "<a href=javascript:history.go()>$lang->refreshAndTryAgain</a>";
+			exit();
+		}
 	}
 	
 	if(empty($_POST['items']))
@@ -85,6 +101,7 @@ if(isset($_POST['addToCart']))
 }
 
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
@@ -160,6 +177,7 @@ function buttonClick(id) {
 	 
 }
 </script>
+<link rel="stylesheet" href="../phppos-style.css" type="text/css" />
 </head>
 
 <body>
@@ -173,17 +191,17 @@ if(isset($_GET['action']))
 }
 
 //ADDED - check if takeaway order or restaurant order
-if(isset($_GET['type']))
-{
+//if(isset($_GET['type']))
+//{
 	// If first time get saletype from previous screen
-	$_SESSION['saleType']=$_GET['type'];
-	$saletype=$_SESSION['saleType'];
-}
-else
-    echo "Went into set saletype when session already saved";
+//	$_SESSION['saleType']=$_GET['type'];
+//	$saletype=$_SESSION['saleType'];
+//}
+//else
+//    echo "Went into set saletype when session already saved";
     // saletype already known
-	{$saletype=$_SESSION['saleType'];
-}
+//	{$saletype=$_SESSION['saleType'];
+//}
 
 if(isset($_POST['customer']))
 {
@@ -193,14 +211,13 @@ if(isset($_POST['customer']))
 //$display->displayTitle("$lang->newSale");
 
 //Start of table and start of form
-echo "<center><form name='additem' onsubmit='return validateForm()' method='POST' action='sale_first_screen.php'>
-	 <table border=1 cellspacing='0' cellpadding='2' bgcolor='$table_bg'><tr>";
-
+echo "<form name='additem' onsubmit='return validateForm()' method='POST' action='sale_first_screen.php'>
+	 <table><tr>";
 
 // TABLE: ROW 1 , BOX 1 ( display sale type - restaurant or takeaway )
 //   $saletype=$_SESSION['saleType'];
 
-echo "<td><font color='FFFFFF'>TYPE:<b> $saletype</b></font></td>";
+echo "<td>TYPE:<b> $saletype</b></td>";
 
 $customers_table="$cfg_tableprefix".'customers';
 
@@ -285,7 +302,7 @@ else
 		$current_customer=$row['last_name'].', '.$row['first_name'];
 	}
 	// TABLE: ALTERNATIVE ROW 1 , BOX 2 - list customer with option to clear
-	echo "<td><center><font color=white><b>$current_customer</b></font>
+	echo "<td><b>$current_customer</b>
 	<a href='delete.php?action=customer'><font size='-1' color='white'>[$lang->clearCustomer]</font></a>
 	</center></td>";
 }
@@ -304,13 +321,13 @@ if(isset($_SESSION['current_sale_customer_id']))
 else
 {
 	// If no customer selected. offer search
-	echo "<td align='center'>
+	echo "<td>
 	<input type='button' onClick='customerPopUp()' value='Click for Customer Search'></td></tr>";
 }
 
 // TABLE: ROW 2 , BOX 1 ( find item - $_POST['item_search'])
 echo "<tr>
-    <td align='left'><font color=white>$lang->findItem:</font>
+    <td>$lang->findItem:
 	<input type='text' size='8' name='item_search' id='item_search'/>
 	<input type='button' value='Go' onclick='getItem(document.getElementById(\"item_search\").value)'>
    <a href='delete.php?action=item_search'><font size='-1' color='white'>[$lang->clearSearch]</font></a>
@@ -318,7 +335,10 @@ echo "<tr>
    //<input type='submit' value='Go' tabindex='3'> - old line
 
 //TABLE: ROW 2, BOX 2 ( text - select item )
-echo "<td align='center'><b><font color=white>$lang->selectItem</font></b></td>";
+// ADD TO CART BUTTON
+	echo "<td>$lang->quantity:
+        <input type='text' size='2' name='quantity' value='1'>
+	<input type='submit' value='Add To Cart' name=addToCart tabindex='1' id='addtocart'></td>";
 
 //TABLE: ROW 2 , BOX 3 ( select number of customers - $_POST['num_of_customers'])
 if(isset($_SESSION['num_of_customers']))
@@ -330,7 +350,7 @@ else
 {
 	if ( $saletype =='restaurant') 
 	{
-		echo "<td><b><font color=white>$lang->numberOfCustomers </font></b><select name='num_of_customers'>";
+		echo "<td><b>$lang->numberOfCustomers </b><select name='num_of_customers'>";
 		$counter=0;
 		while ( $counter <= 40 ) {
 		    
@@ -354,7 +374,8 @@ $brand_result=mysql_query("SELECT brand,id FROM $brands_table",$dbf->conn);
 
 // TABLE: ROW 3 , BOX 1 ( select categories )
 echo "<tr>
-	<td align='left' bgcolor='FFFFFF' rowspan='99'>
+	<td rowspan='99'style='background:white'>
+        <div class='category'>
 	<ul>";
 
 while($row=mysql_fetch_assoc($brand_result))
@@ -363,10 +384,10 @@ while($row=mysql_fetch_assoc($brand_result))
 	$brand_name=$dbf->idToField("$brands_table",'brand',"$bid");
 	$display_brand="$brand_name";
 	//echo "<li><a href='sale_first_screen.php?action=$bid'><font color='0000FF'><b>$display_brand</b></font></a></li>\n";
-	echo "<li><a href='javascript:getItem($bid)'><font color='0000FF'><b>$display_brand</b></font></a></li>\n";
+	echo "<li><a href='javascript:getItem($bid)'>$display_brand</a></li>\n";
 }
 
-echo "</ul></td>";
+echo "</ul></div></td>";
 
 // If item search entered and item search not blank
 if(isset($_POST['item_search'])  and $_POST['item_search']!='')
@@ -395,10 +416,10 @@ else
 
 
 // TABLE: ROW 3 , BOX 2 ( select items - $_POST['items'])
-echo "<td id='items' align='center' rowspan='99'>";
+echo "<td id='items' rowspan='99' style='vertical-align:top;text-align:center'>";
 
 //echo "<select name='items[]' multiple size='8'>\n";
-echo "<select name='items' size='8'>\n";
+echo "<p>Select Items</p><p><select name='items' size='8'>\n";
 
 while($row=mysql_fetch_assoc($item_result))
 {
@@ -419,7 +440,7 @@ while($row=mysql_fetch_assoc($item_result))
  	echo "<option value='$option_value'>$display_item</option>\n";
 
 }
-echo "</select></td></center>";
+echo "</select></td>";
 
 
 
@@ -433,15 +454,8 @@ if(isset($_SESSION['saleType']))
 	$saletype=$_SESSION['saleType'];
 }
 
-// END OF MAIN TABLE
-echo "</table>";
-
-// ADD TO CART BUTTON
-echo "<table border=1 cellspacing='0' cellpadding='2' bgcolor='$table_bg' align=center>
-	<td align='center' colspan='99'><font color=white>$lang->quantity:</font> <input type='text' size='4' name='quantity' value='1'>
-	<input type='submit' value='Add To Cart' name=addToCart tabindex='1'></td></table>
-	</form>";
-// Form ended
+// END OF MAIN TABLE - END OF FORM
+echo "</table> </form>";
 
 
 $dbf->closeDBlink();

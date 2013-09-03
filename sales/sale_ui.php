@@ -30,12 +30,12 @@ if(!$sec->isLoggedIn())
 
 if(isset($_POST['addSale']))
 {
-    $_SESSION['current_sale_customer_id']['paid_with']=$_POST['paid_with'];
-    $_SESSION['current_sale_customer_id']['discount']=$_POST['discount'];
-    $_SESSION['current_sale_customer_id']['comment']=$_POST['comment'];
-    $_SESSION['current_sale_customer_id']['totalTax']=$_POST['totalTax'];
-    $_SESSION['current_sale_customer_id']['finalTotal']=$_POST['finalTotal'];
-	$_SESSION['current_sale_customer_id']['totalItemsPurchased']=$_POST['totalItemsPurchased'];
+    $_SESSION['paid_with']=$_POST['paid_with'];
+    $_SESSION['discount']=$_POST['discount'];
+    $_SESSION['comment']=$_POST['comment'];
+    $_SESSION['totalTax']=$_POST['totalTax'];
+    $_SESSION['finalTotal']=$_POST['finalTotal'];
+	$_SESSION['totalItemsPurchased']=$_POST['totalItemsPurchased'];
 
 	header ("location: ./addsale.php");
 	exit();
@@ -124,10 +124,10 @@ else
 
 
 </script>
+<link rel="stylesheet" href="../phppos-style.css" type="text/css" />
 </head>
 
 <body>
-<p>DEBUG: Got to sale screen
 
 <?php
 
@@ -141,13 +141,13 @@ if(isset($_GET['action']))
 //ADDED - check if takeaway order or restaurant order
 if(isset($_GET['type']))
 {
-	$_SESSION['current_sale_customer_id']['saleType']=$_GET['type'];
-	$saletype=$_SESSION['current_sale_customer_id']['saleType'];
+	$_SESSION['saleType']=$_GET['type'];
+	$saletype=$_SESSION['saleType'];
 }
 
-if(isset($_SESSION['current_sale_customer_id']['num_of_customers']))
+if(isset($_SESSION['num_of_customers']))
 {
-	$num_of_customers=$_SESSION['current_sale_customer_id']['num_of_customers'];
+	$num_of_customers=$_SESSION['num_of_customers'];
 }
 
 if(isset($_POST['addToCart']))
@@ -171,7 +171,7 @@ if(isset($_POST['addToCart']))
 	$quantity_to_add=$_POST['quantity'];
 	for($k=0;$k<count($items_to_add);$k++)
 	{
-	$_SESSION['current_sale_customer_id']['items_in_sale'][]=$items_to_add.' '.$quantity_to_add;
+	$_SESSION['items_in_sale'][]=$items_to_add.' '.$quantity_to_add;
 	}
 }
 
@@ -180,10 +180,28 @@ if(isset($_POST['addToCart']))
 echo "<center><form name='additem' method='POST' action='sale_ui.php'>
 	 <table border=1 cellspacing='0' cellpadding='2' bgcolor='$table_bg'><tr>";
 
-if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
+	$customers_table="$cfg_tableprefix".'customers';
+	$order_customer_first_name=$dbf->idToField($customers_table,'first_name',$_SESSION['current_sale_customer_id']);
+	$order_customer_last_name=$dbf->idToField($customers_table,'last_name',$_SESSION['current_sale_customer_id']);
+	$order_customer_name=$order_customer_first_name.' '.$order_customer_last_name;
+
+	$saletype=$_SESSION['saleType'];
+	if($saletype=='restaurant')
+	{
+	// ROW 1 , BOX 1 and BOX 2 - customer(s) description and clear sale option
+	echo "<td colspan=2><center><h3>$lang->restaurantOrder $lang->orderFor: <b>$order_customer_name</b> ( $num_of_customers customers )</h3></td>
+		<td colspan=1 align='center'><a href=delete.php?action=all>[Clear Sale]</a></td>";
+	}
+	else
+	{
+	echo "<td colspan=2><center><h3>$lang->takeawayOrder $lang->orderFor: <b>$order_customer_name</b></h3></td>
+		<td colspan=1 align='center'><a href=delete.php?action=all>[Clear Sale]</a></td>";
+	}
+
+if(isset($_SESSION['items_in_sale']))
 {
 	
-	$num_items=count($_SESSION['current_sale_customer_id']['items_in_sale']);
+	$num_items=count($_SESSION['items_in_sale']);
 	$temp_item_name='';
 	$temp_item_id='';
 	$temp_quantity='';
@@ -195,23 +213,56 @@ if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
 
 	$item_info=array();
 
-	$customers_table="$cfg_tableprefix".'customers';
-	$order_customer_first_name=$dbf->idToField($customers_table,'first_name',$_SESSION['current_sale_customer_id']);
-	$order_customer_last_name=$dbf->idToField($customers_table,'last_name',$_SESSION['current_sale_customer_id']);
-	$order_customer_name=$order_customer_first_name.' '.$order_customer_last_name;
 
-	$saletype=$_SESSION['current_sale_customer_id']['saleType'];
-	if($saletype=='restaurant')
-	{
-	// ROW 1 , BOX 1 and BOX 2 - customer(s) description and clear sale option
-	echo "<td colspan=6><center><h3>$lang->restaurantOrder $lang->orderFor: <b>$order_customer_name</b> ( $num_of_customers customers )</h3></td>
-		<td colspan=2 align='center'><a href=delete.php?action=all>[Clear Sale]</a></td></tr>";
-	}
-	else
-	{
-	echo "<td colspan=5><center><h3>$lang->takeawayOrder $lang->orderFor: <b>$order_customer_name</b></h3></td>
-		<td colspan=2 align='center'><a href=delete.php?action=all>[Clear Sale]</a></td></tr>";
-	}
+	  for($k=0;$k<$num_items;$k++)
+          {
+		$item_info=explode(' ',$_SESSION['items_in_sale'][$k]);
+		//$temp_item_id=$item_info[0];
+		//$temp_item_name=$dbf->idToField($items_table,'item_name',$temp_item_id);
+		$temp_price=$item_info[1];
+		// Hard set tax - could get from items database
+		$temp_tax=1.2;
+		$temp_quantity=$item_info[2];
+		$subTotal=$temp_price*$temp_quantity;
+		$tax=$subTotal-($subTotal/$temp_tax);
+		$rowTotal=$subTotal;
+		$rowTotal=number_format($rowTotal,2,'.', '');
+		$finalSubTotal+=$subTotal;
+		$finalTax+=$tax;
+		$finalTotal+=$rowTotal;
+		$totalItemsPurchased+=$temp_quantity;
+            }
+
+	  $finalSubTotal=number_format($finalSubTotal,2,'.', '');
+	  $finalTax=number_format($finalTax,2,'.', '');
+	  $finalTotal=number_format($finalTotal,2,'.', '');
+        
+	echo "<td><font color='white'>$lang->paidWith:</font><br>
+		<select name='paid_with'>
+		<option value='$lang->TBC'>$lang->TBC</option>
+		<option value='$lang->cash'>$lang->cash</option>
+		<option value='$lang->check'>$lang->check</option>
+		<option value='$lang->credit'>$lang->credit</option>
+		<option value='$lang->debit'>$lang->debit</option>
+		<option value='$lang->account'>$lang->account</option>
+		<option value='$lang->other'>$lang->other</option>
+		</select></td>
+		<td><font color='white'>$lang->discount:<select name=discount>
+		<option value='0'>0%</option>
+		<option value='0.9'>10%</option>
+		<option value='0.8'>20%</option>
+		<option value='0.7'>30%</option>
+		</select></td>
+
+		<td colspan=2><font color='white'>$lang->saleComment:</font><br>
+		<input type=text name=comment size=15>
+		</td>
+
+		<td colspan=1 align='center'>
+	        <input type=hidden name='totalItemsPurchased' value='$totalItemsPurchased'>
+		<input type=hidden name='totalTax' value='$finalTax'>
+		<input type=hidden name='finalTotal' value='$finalTotal'>
+		<input type='submit' id='addsale' value='Add Sale' name=addSale  onClick='buttonClick(this.id)'> </center></td></tr>";
 }
 
 // ROW 2 , BOX 1 - find item
@@ -229,12 +280,12 @@ $brands_table="$cfg_tableprefix".'brands';
 if(isset($_POST['item_search'])  and $_POST['item_search']!='')
 {
 	$search=$_POST['item_search'];
-	$_SESSION['current_sale_customer_id']['current_item_search']=$search;
+	$_SESSION['current_item_search']=$search;
 	$item_result=mysql_query("SELECT item_name,total_cost,tax_percent,brand_id,id,takeawayprice FROM $items_table WHERE item_name like \"%$search%\" or item_number= \"$search\" or id =\"$search\" ORDER by item_name",$dbf->conn);
 }
-elseif(isset($_SESSION['current_sale_customer_id']['current_item_search']))
+elseif(isset($_SESSION['current_item_search']))
 {
-  	$search=$_SESSION['current_sale_customer_id']['current_item_search'];
+  	$search=$_SESSION['current_item_search'];
   	$item_result=mysql_query("SELECT item_name,total_cost,tax_percent,brand_id,id,takeawayprice FROM $items_table WHERE item_name like \"%$search%\" or item_number= \"$search\" or id =\"$search\" ORDER by item_name",$dbf->conn);
 
 }
@@ -252,15 +303,18 @@ else
 }
 
 // ROW 2 , BOX 2 & BOX 3 - select item and blank box 
-$item_title=isset($_SESSION['current_sale_customer_id']['current_item_search']) ? "<td colspan=2><b><font color=white>$lang->selectItem</font></b>":"<font color=white>$lang->selectItem</font></td>";
+echo "<td align='center'><font color=white>$lang->quantity:</font>
+      <input type='text' size='4' name='quantity' value='1'>
+      <input type='submit' id='itemtoadd' value='Add To Cart' name=addToCart tabindex='1' onClick='buttonClick(this.id)'>
+      </td>";
 
 $brand_result=mysql_query("SELECT brand,id FROM $brands_table",$dbf->conn);
 
 
-echo "<td align='center'>$item_title</td>";
+//echo "<td align='center'>$item_title</td>";
 
 
-if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
+if(isset($_SESSION['items_in_sale']))
 {
 	
 	echo "
@@ -278,6 +332,7 @@ if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
 echo "<!-- Added section to table for menu subsections -->
 	<tr>
 	<td align='left' bgcolor='FFFFFF' rowspan='99'>
+        <div class='category'>
 	<ul>";
 
 while($row=mysql_fetch_assoc($brand_result))
@@ -286,24 +341,24 @@ while($row=mysql_fetch_assoc($brand_result))
 	$brand_name=$dbf->idToField("$brands_table",'brand',"$bid");
 	$display_brand="$brand_name";
 	
-	echo "<li><a href='javascript:getItem($bid)'><font color='0000FF'><b>$display_brand</b></font></a></li>\n";
+	echo "<li><a href='javascript:getItem($bid)'>$display_brand</a></li>\n";
 
 }
 
-echo "</ul></td>";
+echo "</ul></div></td>";
 
-if(isset($_SESSION['current_sale_customer_id']['saleType']))
+if(isset($_SESSION['saleType']))
 {
-	$saletype=$_SESSION['current_sale_customer_id']['saleType'];
+	$saletype=$_SESSION['saleType'];
 }
 
 
 // ROW3 , BOX 2 - list of items
-echo "<td id='items' align='center' rowspan='99'>";
+echo "<td id='items' rowspan='99' style='text-align:center;vertical-align:top'>";
 
 
 //echo "<select name='items[]' multiple size='8'>\n";
-echo "<select name='items' size='8'>\n";
+echo "<p>Select Items</p><p><select name='items' size='8'>\n";
 
 
 while($row=mysql_fetch_assoc($item_result))
@@ -325,15 +380,15 @@ while($row=mysql_fetch_assoc($item_result))
  	echo "<option value='$option_value'>$display_item</option>\n";
 
 }
-echo "</select></td></center>";
+echo "</select></td>";
 
-if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
+if(isset($_SESSION['items_in_sale']))
 {
 
 
 	for($k=0;$k<$num_items;$k++)
 	{
-		$item_info=explode(' ',$_SESSION['current_sale_customer_id']['items_in_sale'][$k]);
+		$item_info=explode(' ',$_SESSION['items_in_sale'][$k]);
 		$temp_item_id=$item_info[0];
 		$temp_item_name=$dbf->idToField($items_table,'item_name',$temp_item_id);
 		$temp_price=$item_info[1];
@@ -344,99 +399,51 @@ if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
 		$tax=$subTotal-($subTotal/$temp_tax);
 		$rowTotal=$subTotal;
 		$rowTotal=number_format($rowTotal,2,'.', '');
-		$finalSubTotal+=$subTotal;
-		$finalTax+=$tax;
-		$finalTotal+=$rowTotal;
+		//$finalSubTotal+=$subTotal;
+		//$finalTax+=$tax;
+		//$finalTotal+=$rowTotal;
 		$totalItemsPurchased+=$temp_quantity;
 
 		if($first=='yes')
 		{
-			echo "<td align='center'><a href=delete.php?action=item&pos=$k><font color=white>[$lang->delete]</font></a></td>";
+			echo "<td align='center' class='sale_info'><a href=delete.php?action=item&pos=$k>[$lang->delete]</a></td>";
 
 		}
 		else
 		{
-			echo "<td align='center'><a href=delete.php?action=item&pos=$k><font color=white>[$lang->delete]</font></a></td>";
+			echo "<td align='center' class='sale_info'><a href=delete.php?action=item&pos=$k>[$lang->delete]</a></td>";
 		}
 		
-		echo "<td><font color='white'><b>$temp_item_name </b></font></td>
-			<td><input type=text name='price$k' value='$temp_price' size='8'></td>
-			<td><input type=text name='quantity$k' value='$temp_quantity' size='3'></td>
-			<td><font color='white'><b>$cfg_currency_symbol$rowTotal</b></font></td>
-			<td><input type='button' name='updateQuantity$k' value='$lang->update' onclick=\"document.additem.action='update_price.php?update_item=$k';document.additem.submit();\"></td>
+		echo "<td class='sale_info'>$temp_item_name </td>
+			<td class='sale_info'><input type=text name='price$k' value='$temp_price' size='8'></td>
+			<td class='sale_info'><input type=text name='quantity$k' value='$temp_quantity' size='3'></td>
+			<td class='sale_info'>$cfg_currency_symbol$rowTotal</td>
+			<td class='sale_info'><input type='button' name='updateQuantity$k' value='$lang->update' onclick=\"document.additem.action='update_price.php?update_item=$k';document.additem.submit();\"></td>
 			<input type='hidden' name='item_id$k' value='$temp_item_id'></tr>";
 	}
 
 }
 
 
-echo "<tr>&nbsp</td>";
+echo "<tr>";
 
-if(isset($_SESSION['current_sale_customer_id']['items_in_sale']))
+if(isset($_SESSION['items_in_sale']))
 {
 
-	$finalSubTotal=number_format($finalSubTotal,2,'.', '');
-	$finalTax=number_format($finalTax,2,'.', '');
-	$finalTotal=number_format($finalTotal,2,'.', '');
+	echo "<td class='sale_info' colspan=6 align='center'>$lang->saleSubTotal: $cfg_currency_symbol$finalSubTotal</td></tr>
+	<tr><td class='sale_info' colspan=6 align='center'>$lang->tax: $cfg_currency_symbol$finalTax</td></tr>
+	<tr><td class='sale_info' colspan=6 align='center'><b>$lang->saleTotalCost: $cfg_currency_symbol$finalTotal</b></td></tr>";
 
-
-
-	echo "<td colspan=6 align='center'>$lang->saleSubTotal: $cfg_currency_symbol$finalSubTotal</td></tr>
-		<tr><td colspan=6 align='center'>$lang->tax: $cfg_currency_symbol$finalTax</td></tr>
-		<tr><td colspan=6 align='center'><b>$lang->saleTotalCost: $cfg_currency_symbol$finalTotal</b></td></tr>";
-
-
-	echo "<br>
-		<tr><td><font color='white'>$lang->paidWith:</font></td>
-		<td colspan=3><select name='paid_with'>
-		<option value='$lang->TBC'>$lang->TBC</option>
-		<option value='$lang->cash'>$lang->cash</option>
-		<option value='$lang->check'>$lang->check</option>
-		<option value='$lang->credit'>$lang->credit</option>
-		<option value='$lang->debit'>$lang->debit</option>
-		<option value='$lang->account'>$lang->account</option>
-		<option value='$lang->other'>$lang->other</option>
-		</select></td>
-		<td colspan=3><font color='white'>$lang->discount:<select name=discount>
-		<option value='0'>0%</option>
-		<option value='0.9'>10%</option>
-		<option value='0.8'>20%</option>
-		<option value='0.7'>30%</option>
-		</select></td></tr>
-
-		<tr>
-		<td><font color='white'>$lang->saleComment:</font>
-		</td>
-		<td colspan=5>
-		<input type=text name=comment size=25>
-		</td></tr>
-
-		<tr><td colspan=6 align='center'>
-	    <input type=hidden name='totalItemsPurchased' value='$totalItemsPurchased'>
-		<input type=hidden name='totalTax' value='$finalTax'>
-		<input type=hidden name='finalTotal' value='$finalTotal'>
-		<input type='submit' id='addsale' value='Add Sale' name=addSale  onClick='buttonClick(this.id)'> </center></td></tr>";
-		//<input type="button" value="Print Envelope" onclick="subm(this.form,'envelope.php')" >
-		// Changed to a button to differentiate between the add to cart submit
-
+	//Temporary fix for formatting...add row to align with categories column
+        echo "<tr><td colspan=6 rowspan=30>&nbsp</td></tr>";
 }
 else
 {
 	echo "<td rowspan=5><center><h3>$lang->yourOrderIsEmpty</h3></center></td></tr>";
 }
 
-echo "</table>";
-
-//echo "<table border=1 cellspacing='0' cellpadding='2' bgcolor='$table_bg' align=center>
-//	<td align='center' colspan='99'><font color=white>$lang->quantity:</font> <input type='text' size='4' name='quantity' value='1'>
-//	<input type='submit' value='Add To Cart' name=addToCart tabindex='1'></td></table>
-//	</form>";
-echo "<table border=1 cellspacing='0' cellpadding='2' bgcolor='$table_bg' align=center>
-	<td align='center' colspan='99'><font color=white>$lang->quantity:</font> <input type='text' size='4' name='quantity' value='1'>
-	<input type='submit' id='itemtoadd' value='Add To Cart' name=addToCart tabindex='1' onClick='buttonClick(this.id)'>
-	</td></table>
-	</form>";
-// Form ended
+// Table and Form ended
+echo "</table></form>";
 
 
 $dbf->closeDBlink();
