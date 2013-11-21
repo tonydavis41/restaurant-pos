@@ -2,10 +2,11 @@
 
 <html>
 <head>
-
+<link rel="stylesheet" href="../phppos-style.css" type="text/css" />
 </head>
 
 <body>
+<div class="receipt">
 <?php
 
 include ("../settings.php");
@@ -223,5 +224,6 @@ if (VERSION > 3) {
     document.write('<form><input type=button value="Print" name="Print" onClick="printit()"></form>');
 }
 </script>
+</div>
 </body>
 </html>

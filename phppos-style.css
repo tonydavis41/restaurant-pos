@@ -66,3 +66,10 @@ color:#005B7F;
 height:12px;
 font: bold 10px arial,sans-serif;
 }
+.receipt
+{
+width: 72mm;
+margin: 0;
+float: none;
+font-size: 12px;
+}
