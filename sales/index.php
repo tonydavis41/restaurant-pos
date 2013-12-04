@@ -28,7 +28,7 @@ echo "
       <font face=\"Verdana\" size=\"2\">$lang->salesWelcomeMessage</font>
       <ul>
         <li><font face=\"Verdana\" size=\"2\"><a href=\"sale_first_screen.php?type=restaurant\">$lang->processSale</a></font></li>
-        <li><font face=\"Verdana\" size=\"2\"><a href=\"sale_ui.php?type=takeaway\">$lang->processTakeawaySale</a></font></li>
+        <li><font face=\"Verdana\" size=\"2\"><a href=\"sale_first_screen.php?type=takeaway\">$lang->processTakeawaySale</a></font></li>
         <li><font face=\"Verdana\" size=\"2\"><a href=\"manage_sales.php\">$lang->manageSales</a></font></li>
       </ul>
     </td>

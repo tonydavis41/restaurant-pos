@@ -44,7 +44,7 @@ if(mysql_num_rows($item_result)==0)
   if (!$item_result) die ("Database access failed:" .mysql_error());
 }
 
-echo "<select name='items' multiple size='8'>\n";
+echo "<p>Select Items <select name='items[]' multiple='multiple' size='8'>\n";
 
 while($row=mysql_fetch_assoc($item_result))
 {

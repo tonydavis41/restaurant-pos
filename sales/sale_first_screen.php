@@ -4,7 +4,6 @@
 session_start();
 
 
-
 include ("../settings.php");
 include ("../language/$cfg_language");
 $lang=new language();
@@ -88,12 +87,10 @@ if(isset($_POST['addToCart']))
 		$items_to_add=array();
 		$items_to_add=$_POST['items'];
 		$quantity_to_add=$_POST['quantity'];
-		//$_SESSION['quantity']=$quantity_to_add;
-		//$_SESSION['items']=$items_to_add;
 
 		for($k=0;$k<count($items_to_add);$k++)
 		{
-		$_SESSION['items_in_sale'][]=$items_to_add.' '.$quantity_to_add;
+		$_SESSION['items_in_sale'][]=$items_to_add[$k].' '.$quantity_to_add;
 		}
 	}
 	header ("location: sale_ui.php");
@@ -418,8 +415,8 @@ else
 // TABLE: ROW 3 , BOX 2 ( select items - $_POST['items'])
 echo "<td id='items' rowspan='99' style='vertical-align:top;text-align:center'>";
 
-//echo "<select name='items[]' multiple size='8'>\n";
-echo "<p>Select Items</p><p><select name='items' size='8'>\n";
+//echo "<select name='items[]' multiple='multiple' size='8'>\n";
+echo "<p>Select Items</p><p><select name='items[]' multiple='multiple' size='8'>\n";
 
 while($row=mysql_fetch_assoc($item_result))
 {

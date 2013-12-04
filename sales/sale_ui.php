@@ -1,5 +1,7 @@
 <?php session_start();
 
+
+
 include ("../settings.php");
 include ("../language/$cfg_language");
 $lang=new language();
@@ -131,7 +133,6 @@ else
 
 <?php
 
-
 //ADDED - if one of the subsection buttons is pressed, just show entries from that subsection
 if(isset($_GET['action']))
 {
@@ -171,7 +172,7 @@ if(isset($_POST['addToCart']))
 	$quantity_to_add=$_POST['quantity'];
 	for($k=0;$k<count($items_to_add);$k++)
 	{
-	$_SESSION['items_in_sale'][]=$items_to_add.' '.$quantity_to_add;
+	$_SESSION['items_in_sale'][]=$items_to_add[$k].' '.$quantity_to_add;
 	}
 }
 
@@ -357,8 +358,8 @@ if(isset($_SESSION['saleType']))
 echo "<td id='items' rowspan='99' style='text-align:center;vertical-align:top'>";
 
 
-//echo "<select name='items[]' multiple size='8'>\n";
-echo "<p>Select Items</p><p><select name='items' size='8'>\n";
+//echo "<select name='items[]' multiple='multiple' size='8'>\n";
+echo "<p>Select Items</p><p><select name='items[]' multiple='multiple' size='8'>\n";
 
 
 while($row=mysql_fetch_assoc($item_result))

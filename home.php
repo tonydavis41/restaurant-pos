@@ -39,7 +39,7 @@ if($auth=="Admin")
 <p><font face="Verdana" size="2"><?php echo "$lang->welcomeTo $cfg_company $lang->adminHomeWelcomeMessage"; ?> </font></p>
 <ul>
   <li><font face="Verdana" size="2"><a href="sales/sale_first_screen.php?type=restaurant"><?php echo $lang->processSale ?></a></font></li>
-  <li><font face="Verdana" size="2"><a href="sales/sale_ui.php?type=takeaway"><?php echo $lang->processTakeawaySale ?></a></font></li>
+  <li><font face="Verdana" size="2"><a href="sales/sale_first_screen.php?type=takeaway"><?php echo $lang->processTakeawaySale ?></a></font></li>
   <li><font face="Verdana" size="2"><a href="users/index.php"><?php echo $lang->addRemoveManageUsers ?></a></font></li>
   <li><font face="Verdana" size="2"><a href="customers/index.php"><?php echo $lang->addRemoveManageCustomers ?></a></font></li>
   <li><font face="Verdana" size="2"><a href="items/index.php"><?php echo $lang->addRemoveManageItems ?></a></font></li>
@@ -60,6 +60,10 @@ bordercolor="#111111" width="550" id="AutoNumber1">
   </tr>
 </table>
 <p><font face="Verdana" size="2"><?php echo "$lang->welcomeTo $cfg_company $lang->salesClerkHomeWelcomeMessage"; ?>
+<ul>
+  <li><font face="Verdana" size="2"><a href="sales/sale_first_screen.php?type=restaurant"><?php echo $lang->processSale ?></a></font></li>
+  <li><font face="Verdana" size="2"><a href="sales/sale_first_screen.php?type=takeaway"><?php echo $lang->processTakeawaySale ?></a></font></li>
+</ul>
 <?php
 }
 else

@@ -73,3 +73,12 @@ margin: 0;
 float: none;
 font-size: 12px;
 }
+.receipt table
+{
+width: 100%;
+font-size: 10px;
+}
+.receipt table td
+{
+text-align: center;
+}

@@ -153,6 +153,7 @@ echo "<tr><td><b>$lang->saleID: $saleID</b></td></tr></table></table>";
 $sec->closeSale();
 $dbf->closeDBlink();
 
+
 echo "<h2><br><b>$lang->service<br></h2>";
 echo "$lang->thanks</b><p>";
 echo"<br><b>$lang->contact $cfg_company:</b><p>";
