@@ -1,4 +1,4 @@
-			PHP Point Of Sale 8.3
+			restuarnt POS - 0.9.1
 ----------------------------------------------------------------
 Requirements:
 ----------------------------------------------------------------
@@ -9,15 +9,12 @@ Apache Web Server recommended
 ----------------------------------------------------------------
 Description:
 ----------------------------------------------------------------------------------------------
-PHP Point Of Sale is designed to help small business's with keeping track of customers, items, inventory, and generate reports based on sales. This
+Restaurant POS is Based on PHP POS 8.3 by Chris Muench. It is designed to help small restaurants with keeping track of customers, items, inventory, and generate reports based on sales. This
 program works great for businesses that use cash, check, or account numbers for there sales.
 ----------------------------------------------------------------------------------------------
 What's New?
 ----------------------------------------------------------------------------------------------
-* Added 3 new reports!  (Brand Report, Category Report, Tax Report)
-* Added configuration option to choose if Row ID's or Account/Item Numbers are used for scanning barcodes at the sale screen.  (Fixes a bug if the Row ID is the same as the Item Number or Account Number.)
-* Improved sale interface when using barcode mode.  Now it is possible to find an item, if you don't have a barcode or can't scan it.
-* No longer can change date of sale because it can cause a bug when calculating totals in reports.
+* New CSS formatting
 
 Key Features:
 --------------------------------------------------------------------------------------------------
@@ -30,10 +27,7 @@ search for customers and items.
 ----------------------------------------------------------------------------------------------------
 How to Upgrade
 ----------------------------------------------------------------------------------------------------
-1. Unzip the Program and place the folder onto a web-server with PHP and MYSQL.
-2. In a browser go to:  http://Yourwebserver.com/Path To Point Of Sale/upgrade/index.php
-3. Verify you have version 7.0 or later installed.
-4. Click submit.
+1. 
 
 ----------------------------------------------------------------------------------------------------
 How to install:
@@ -51,17 +45,16 @@ How to install:
 ------------------------------------------------------------------------------------------
 Contact Me:
 ------------------------------------------------------------------------------------------
-Feel free to contact me at blasto333@mac.com if you have any questions concerning development, support,
+Feel free to contact me via GitHub if you have any questions concerning development, support,
 or requested features!
 ------------------------------------------------------------------------------------------
 About Me:
 ------------------------------------------------------------------------------------------
-My name is Chris Muench.  I am an 18 year old student at the Rochester Institute of Technology.  I enjoy programming and this is my first major program.  It turned out pretty good.
+My name is Tony Davis.
 ------------------------------------------------------------------------------------------
 Other / Miscellaneous 
 ------------------------------------------------------------------------------------------
 If you would like to improve this program or make a manual feel free,
 please contact me if you contribute in any way!
-blasto333@mac.com
 ------------------------------------------------------------------------------------------
 
